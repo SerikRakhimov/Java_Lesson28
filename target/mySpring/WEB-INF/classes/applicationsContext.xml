@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <bean id="classicMusic" class="music.ClassicMusic" />
+
+    <bean id="_idPop" class="music.PopMusic" />
+
+    <context:property-placeholder location="beans.properties"/>
+
+    <bean id="musicPlayer" class="music.MusicPlayer" scope="prototype">
+        <property name="music" ref="classicMusic"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+        <property name="power" value="${musicPlayer.power}"/>
+        <property name="isWorking" value="${musicPlayer.isWorking}"/>
+    </bean>
+</beans>
